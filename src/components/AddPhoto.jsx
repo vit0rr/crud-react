@@ -1,16 +1,18 @@
 import { useState } from "react";
 
-function AddPhoto({vitor}) {
+function AddPhoto({ vitor }) {
   const [url, setUrl] = useState("");
 
-    function handleSubmit() {
-        const previewValues = localStorage.getItem("url") ? JSON.parse(localStorage.getItem("url")) : [];
-        const newPhotos = previewValues.concat(url)
-        localStorage.setItem("url", JSON.stringify(newPhotos));
-        vitor(newPhotos);
-    }
+  function handleSubmit() {
+    const previewValues = localStorage.getItem("url")
+      ? JSON.parse(localStorage.getItem("url"))
+      : [];
+    const newPhotos = previewValues.concat(url);
+    localStorage.setItem("url", JSON.stringify(newPhotos));
+    vitor(newPhotos);
+  }
 
-    console.log(vitor);
+  console.log(vitor);
   return (
     <div className="input-container">
       <input
