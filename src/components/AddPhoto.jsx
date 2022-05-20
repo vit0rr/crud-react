@@ -12,7 +12,6 @@ function AddPhoto({ vitor }) {
     vitor(newPhotos);
   }
 
-  console.log(vitor);
   return (
     <div className="input-container">
       <input

@@ -10,7 +10,6 @@ function App() {
 
   function handleDelete(idx) {
     const newUrls = urls.filter((url, index) => index !== idx);
-    console.log(idx);
     setUrls(newUrls);
     localStorage.setItem("url", JSON.stringify(newUrls));
   }
