@@ -34,7 +34,11 @@ export const Photo = ({ index, url, refetchPhotos }) => {
       <Container direction="row" style={{ gap: 4 }}>
         <button onClick={handleDelete}>Delete</button>
         {showInput ? (
-          <EditPhoto handleUpdate={handleUpdate} />
+          <EditPhoto
+            handleUpdate={handleUpdate}
+            showInput={setShowInput}
+            shouldShowInput={showInput}
+          />
         ) : (
           <button onClick={handleShowInput}>Edit</button>
         )}
