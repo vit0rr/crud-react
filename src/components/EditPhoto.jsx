@@ -1,13 +1,19 @@
 import { useState } from "react";
-import React from 'react'
 import ClickAwayListener from "@mui/material/ClickAwayListener";
+// import { fetchPhotos } from '../utils/photos';
 
 export const EditPhoto = ({ handleUpdate }) => {
   const [imageUrl, setImageUrl] = useState();
+  const [showInput, setShowInput] = useState(true);
+
+  const hideInputClickAway = () => {
+    setShowInput(false);
+    console.log("vitor")
+  }
 
   return (
     <>
-      <ClickAwayListener onClickAway={() => {console.log("vitor")}}>
+      <ClickAwayListener onClickAway={hideInputClickAway}>
         <input
           type="text"
           value={imageUrl}
