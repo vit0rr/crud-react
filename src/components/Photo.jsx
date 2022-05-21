@@ -29,6 +29,7 @@ export const Photo = ({ index, url, refetchPhotos }) => {
         gap: 5,
         borderRadius: 4,
         backgroundColor: '#ededef',
+        boxShadow: '4px 5px #00000026',
       }}
     >
       <img src={url} width="200px" />
