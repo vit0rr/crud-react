@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-// import { fetchPhotos } from '../utils/photos';
+import { useState } from "react";
+import ClickAwayListener from "@mui/material/ClickAwayListener";
+import Button from "@mui/material/Button";
+import TextField from '@mui/material/TextField';
 
 export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
   const [imageUrl, setImageUrl] = useState();
@@ -16,21 +17,24 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
   return (
     <>
       <ClickAwayListener onClickAway={hideInputClickAway}>
-        <input
-          type="text"
+        <TextField
+          id="outlined-basic"
+          label="Paste your new URL image here"
+          variant="outlined"
           value={imageUrl}
-          placeholder="Paste your new URL image here"
           onChange={(e) => setImageUrl(e.target.value)}
         />
       </ClickAwayListener>
-      <button
+      <Button
+        variant="contained"
+        color="success"
         onClick={() => {
           handleUpdate(imageUrl);
-          setImageUrl('');
+          setImageUrl("");
         }}
       >
         Send edit
-      </button>
+      </Button>
     </>
   );
 };
