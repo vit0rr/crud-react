@@ -1,18 +1,14 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { createPhoto, fetchPhotos } from '../utils/photos';
 
-function AddPhoto({ vitor }) {
-  const [url, setUrl] = useState("");
+function AddPhoto({ refetchPhotos }) {
+  const [url, setUrl] = useState('');
 
-  function handleSubmit() {
-    const previewValues = localStorage.getItem("url")
-      ? JSON.parse(localStorage.getItem("url"))
-      : [];
-    const newPhotos = previewValues.concat(url);
-    localStorage.setItem("url", JSON.stringify(newPhotos));
-    vitor(newPhotos);
-  }
+  const handleSubmit = () => {
+    createPhoto(url);
+    refetchPhotos(fetchPhotos());
+  };
 
-  console.log(vitor);
   return (
     <div className="input-container">
       <input

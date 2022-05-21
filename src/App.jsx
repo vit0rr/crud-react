@@ -1,67 +1,32 @@
-import { useState } from "react";
-import AddPhoto from "./components/AddPhoto";
+import { useEffect, useState } from 'react';
+import AddPhoto from './components/AddPhoto';
+import { Container } from './components/Container';
+import { Photo } from './components/Photo';
+import { fetchPhotos } from './utils/photos';
 
 function App() {
-  const [urls, setUrls] = useState(
-    localStorage.getItem("url") ? JSON.parse(localStorage.getItem("url")) : []
-  );
-  const [showInput, setShowInput] = useState(false);
-  const [imageUrl, setImageUrl] = useState("");
+  const [urls, setUrls] = useState([]);
 
-  function handleDelete(idx) {
-    const newUrls = urls.filter((url, index) => index !== idx);
-    console.log(idx);
-    setUrls(newUrls);
-    localStorage.setItem("url", JSON.stringify(newUrls));
-  }
-
-  function handleShowInput() {
-    setShowInput(true);
-  }
-
-  function handleUpdate(index) {
-    const newUrls = urls.map((url, idx) => {
-      if (idx === index) {
-        return imageUrl;
-      }
-      return url;
-    });
-    setUrls(newUrls);
-    localStorage.setItem("url", JSON.stringify(newUrls));
-    setImageUrl("");
-    setShowInput(false);
-  }
+  useEffect(() => {
+    const photos = fetchPhotos();
+    setUrls(photos);
+  }, []);
 
   return (
-    <div>
-      <AddPhoto vitor={setUrls} />
-      {urls.map((url, index) => (
-        <>
-          <br />
-          <button
-            onClick={() => {
-              handleDelete(index);
-            }}
-          >
-            Delete
-          </button>
-          {!showInput ? (
-            <button onClick={handleShowInput}>Edit</button>
-          ) : (
-            <>
-              <input
-                type="text"
-                value={imageUrl}
-                placeholder="Paste your new URL image here"
-                onChange={(e) => setImageUrl(e.target.value)}
-              />
-              <button onClick={() => handleUpdate(index)}>Send edit</button>
-            </>
-          )}
-          <img src={url} key={index} width="300px" />
-        </>
-      ))}
-    </div>
+    <Container>
+      <AddPhoto refetchPhotos={setUrls} />
+      <Container
+        direction="row"
+        style={{
+          gap: 25,
+          flexWrap: 'wrap',
+        }}
+      >
+        {urls?.map((url, index) => (
+          <Photo key={index} index={index} url={url} refetchPhotos={setUrls} />
+        ))}
+      </Container>
+    </Container>
   );
 }
 
