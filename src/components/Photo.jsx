@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { deletePhoto, fetchPhotos, updatePhoto } from '../utils/photos';
 import { Container } from './Container';
 import { EditPhoto } from './EditPhoto';
+import Button from '@mui/material/Button';
 
 export const Photo = ({ index, url, refetchPhotos }) => {
   const [showInput, setShowInput] = useState(false);
@@ -25,14 +26,15 @@ export const Photo = ({ index, url, refetchPhotos }) => {
     <Container
       style={{
         padding: 10,
-        backgroundColor: '#121212',
         gap: 5,
-        borderRadius: 8,
+        borderRadius: 4,
+        backgroundColor: '#ededef',
+        boxShadow: '4px 5px #00000026',
       }}
     >
       <img src={url} width="200px" />
       <Container direction="row" style={{ gap: 4 }}>
-        <button onClick={handleDelete}>Delete</button>
+        <Button onClick={handleDelete} variant="contained" color="error" style={{margin:"10px"}}>Delete</Button>
         {showInput ? (
           <EditPhoto
             handleUpdate={handleUpdate}
@@ -40,7 +42,7 @@ export const Photo = ({ index, url, refetchPhotos }) => {
             shouldShowInput={showInput}
           />
         ) : (
-          <button onClick={handleShowInput}>Edit</button>
+          <Button onClick={handleShowInput} style={{margin:"10px"}} variant="contained">Edit</Button>
         )}
       </Container>
     </Container>

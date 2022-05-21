@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { createPhoto, fetchPhotos } from '../utils/photos';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import GitHub from './GitHub'
 
 function AddPhoto({ refetchPhotos }) {
   const [url, setUrl] = useState('');
@@ -11,16 +14,12 @@ function AddPhoto({ refetchPhotos }) {
 
   return (
     <div className="input-container">
-      <input
-        type="text"
-        placeholder="Image URL"
-        value={url}
-        onChange={(e) => {
+      <TextField id="outlined-basic" label="Image URL" variant="outlined" value={url} onChange={(e) => {
           setUrl(e.target.value);
-        }}
-      />
-      <button onClick={handleSubmit}>Enviar</button> <br />
-      <span className="githubLink"><a href="https://github.com/vit0rr/crud-react" target={'_blank'}>GiHub Project</a></span>
+        }}/> 
+        <br/> <br/>
+        <GitHub/> <br/><br/>
+      <Button variant="contained" color="success" onClick={handleSubmit}>Send</Button> <br />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import AddPhoto from './components/AddPhoto';
 import { Container } from './components/Container';
 import { Photo } from './components/Photo';
 import { fetchPhotos } from './utils/photos';
+import './styles.css'
 
 function App() {
   const [urls, setUrls] = useState([]);
@@ -13,6 +14,7 @@ function App() {
   }, []);
 
   return (
+    <>
     <Container>
       <AddPhoto refetchPhotos={setUrls} />
       <Container
@@ -27,6 +29,7 @@ function App() {
         ))}
       </Container>
     </Container>
+    </>
   );
 }
 
