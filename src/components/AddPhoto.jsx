@@ -19,7 +19,8 @@ function AddPhoto({ refetchPhotos }) {
           setUrl(e.target.value);
         }}
       />
-      <button onClick={handleSubmit}>Enviar</button>
+      <button onClick={handleSubmit}>Enviar</button> <br />
+      <span className="githubLink"><a href="https://github.com/vit0rr/crud-react" target={'_blank'}>GiHub Project</a></span>
     </div>
   );
 }

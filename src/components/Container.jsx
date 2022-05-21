@@ -6,6 +6,7 @@ export const Container = ({ children, direction = 'column', style }) => (
       alignItems: 'center',
       flexDirection: direction,
       marginTop: '6px',
+      textAlign: 'center',
       ...style,
     }}
   >
