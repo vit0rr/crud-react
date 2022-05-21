@@ -33,7 +33,7 @@ export const Photo = ({ index, url, refetchPhotos }) => {
     >
       <img src={url} width="200px" />
       <Container direction="row" style={{ gap: 4 }}>
-        <Button onClick={handleDelete} variant="contained" color="error">Delete</Button>
+        <Button onClick={handleDelete} variant="contained" color="error" style={{margin:"10px"}}>Delete</Button>
         {showInput ? (
           <EditPhoto
             handleUpdate={handleUpdate}
@@ -41,7 +41,7 @@ export const Photo = ({ index, url, refetchPhotos }) => {
             shouldShowInput={showInput}
           />
         ) : (
-          <Button onClick={handleShowInput} variant="contained">Edit</Button>
+          <Button onClick={handleShowInput} style={{margin:"10px"}} variant="contained">Edit</Button>
         )}
       </Container>
     </Container>

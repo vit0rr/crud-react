@@ -28,6 +28,7 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
       <Button
         variant="contained"
         color="success"
+        style={{margin:"10px"}}
         onClick={() => {
           handleUpdate(imageUrl);
           setImageUrl("");
