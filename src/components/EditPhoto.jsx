@@ -1,14 +1,16 @@
-import { useState } from "react";
-import ClickAwayListener from "@mui/material/ClickAwayListener";
+import { useState } from 'react';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 // import { fetchPhotos } from '../utils/photos';
 
-export const EditPhoto = ({ handleUpdate }) => {
+export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
   const [imageUrl, setImageUrl] = useState();
-  const [showInput, setShowInput] = useState(true);
 
   const hideInputClickAway = () => {
-    setShowInput(false);
-    console.log("vitor")
+    showInput(false);
+  };
+
+  if (!shouldShowInput) {
+    return <></>;
   }
 
   return (
@@ -20,15 +22,15 @@ export const EditPhoto = ({ handleUpdate }) => {
           placeholder="Paste your new URL image here"
           onChange={(e) => setImageUrl(e.target.value)}
         />
-        </ClickAwayListener>
-        <button
-          onClick={() => {
-            handleUpdate(imageUrl);
-            setImageUrl("");
-          }}
-        >
-          Send edit
-        </button>
+      </ClickAwayListener>
+      <button
+        onClick={() => {
+          handleUpdate(imageUrl);
+          setImageUrl('');
+        }}
+      >
+        Send edit
+      </button>
     </>
   );
 };
