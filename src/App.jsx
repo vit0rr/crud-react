@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import AddPhoto from './components/AddPhoto';
+import { Container } from './components/Container';
 import { Photo } from './components/Photo';
 import { fetchPhotos } from './utils/photos';
 
@@ -12,12 +13,20 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <Container>
       <AddPhoto refetchPhotos={setUrls} />
-      {urls?.map((url, index) => (
-        <Photo key={index} index={index} url={url} refetchPhotos={setUrls} />
-      ))}
-    </div>
+      <Container
+        direction="row"
+        style={{
+          gap: 25,
+          flexWrap: 'wrap',
+        }}
+      >
+        {urls?.map((url, index) => (
+          <Photo key={index} index={index} url={url} refetchPhotos={setUrls} />
+        ))}
+      </Container>
+    </Container>
   );
 }
 

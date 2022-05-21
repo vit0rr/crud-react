@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { deletePhoto, fetchPhotos, updatePhoto } from '../utils/photos';
+import { Container } from './Container';
 import { EditPhoto } from './EditPhoto';
 
 export const Photo = ({ index, url, refetchPhotos }) => {
@@ -21,16 +22,23 @@ export const Photo = ({ index, url, refetchPhotos }) => {
   };
 
   return (
-    <>
-      <br />
-      <button onClick={handleDelete}>Delete</button>
-      {showInput ? (
-        <EditPhoto handleUpdate={handleUpdate} />
-      ) : (
-        <button onClick={handleShowInput}>Edit</button>
-      )}
-
-      <img src={url} width="300px" />
-    </>
+    <Container
+      style={{
+        padding: 10,
+        backgroundColor: '#121212',
+        gap: 5,
+        borderRadius: 8,
+      }}
+    >
+      <img src={url} width="200px" />
+      <Container direction="row" style={{ gap: 4 }}>
+        <button onClick={handleDelete}>Delete</button>
+        {showInput ? (
+          <EditPhoto handleUpdate={handleUpdate} />
+        ) : (
+          <button onClick={handleShowInput}>Edit</button>
+        )}
+      </Container>
+    </Container>
   );
 };
