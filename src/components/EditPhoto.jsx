@@ -8,6 +8,7 @@ import Alert from "@mui/material/Alert";
 export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
   const [imageUrl, setImageUrl] = useState();
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     console.log(open);
@@ -39,35 +40,45 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
       handleUpdate(imageUrl);
       setImageUrl("");
     } catch (error) {
-      <span>Heelo my friend</span>;
       console.log(error);
+      setError("invalid url");
     }
   };
 
   return (
-    <>
+    <div>
       <ClickAwayListener onClickAway={hideInputClickAway}>
-        <TextField
-          id="outlined-basic"
-          label="Paste your new URL image here"
-          variant="outlined"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-        />
+        <div>
+          <TextField
+            id="outlined-basic"
+            label="Paste your new URL image here"
+            variant="outlined"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+          />
+          <Button
+            variant="contained"
+            color="success"
+            style={{ margin: "10px" }}
+            onClick={verifyIfImageUrlIsValid}
+          >
+            Send edit
+          </Button>
+          <Snackbar
+            open={!!error}
+            autoHideDuration={6000}
+            onClose={handleClose}
+          >
+            <Alert
+              onClose={handleClose}
+              severity="error"
+              sx={{ width: "100%" }}
+            >
+              {error}
+            </Alert>
+          </Snackbar>
+        </div>
       </ClickAwayListener>
-      <Button
-        variant="contained"
-        color="success"
-        style={{ margin: "10px" }}
-        onClick={verifyIfImageUrlIsValid}
-      >
-        Send edit
-      </Button>
-      <Snackbar open={true} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
-          This is a error message!
-        </Alert>
-      </Snackbar>
-    </>
+    </div>
   );
 };
