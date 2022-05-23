@@ -2,7 +2,6 @@ import { useState } from "react";
 import { createPhoto, fetchPhotos } from "../utils/photos";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import GitHub from "./GitHub";
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 
@@ -46,9 +45,8 @@ function AddPhoto({ refetchPhotos }) {
         onChange={(e) => {
           setUrl(e.target.value);
         }}
-      />
-      <br /> <br />
-      <GitHub /> <br />
+      />{" "}
+      <br />
       <br />
       <Button
         variant="contained"
