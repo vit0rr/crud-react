@@ -39,7 +39,7 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
       handleUpdate(imageUrl);
       setImageUrl("");
     } catch (error) {
-      <span>Heelo my friend</span>;
+      handleClick(true);
       console.log(error);
     }
   };
@@ -63,7 +63,7 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
       >
         Send edit
       </Button>
-      <Snackbar open={true} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
           This is a error message!
         </Alert>
