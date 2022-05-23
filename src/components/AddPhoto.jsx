@@ -31,10 +31,10 @@ function AddPhoto({ refetchPhotos }) {
         variant="contained"
         color="success"
         onClick={() => {
-          if (url) {
+          if (new URL(url)) {
             handleSubmit();
           } else {
-            alert("Invalid URL");
+            throw new Error("Invalid URL");
           }
         }}
       >

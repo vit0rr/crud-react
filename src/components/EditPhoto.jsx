@@ -30,11 +30,11 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
         color="success"
         style={{ margin: "10px" }}
         onClick={() => {
-          if (imageUrl == undefined) {
-            alert("Invalid URL");
-          } else {
+          if (new URL(url)) {
             handleUpdate(imageUrl);
             setImageUrl("");
+          } else {
+            throw new Error("Invalid URL");
           }
         }}
       >
