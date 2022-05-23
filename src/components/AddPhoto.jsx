@@ -3,6 +3,8 @@ import { createPhoto, fetchPhotos } from '../utils/photos';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import GitHub from './GitHub'
+import Alert from '@mui/material/Alert';
+
 
 function AddPhoto({ refetchPhotos }) {
   const [url, setUrl] = useState('');
@@ -19,7 +21,8 @@ function AddPhoto({ refetchPhotos }) {
         }}/> 
         <br/> <br/>
         <GitHub/> <br/><br/>
-      <Button variant="contained" color="success" onClick={handleSubmit}>Send</Button> <br />
+      <Button variant="contained" color="success" onClick={()=>{if(url){handleSubmit()}else{alert("Invalid URL")}}}>Send</Button> <br />
+      
     </div>
   );
 }

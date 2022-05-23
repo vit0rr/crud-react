@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Button from "@mui/material/Button";
-import TextField from '@mui/material/TextField';
+import TextField from "@mui/material/TextField";
 
 export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
   const [imageUrl, setImageUrl] = useState();
@@ -28,10 +28,14 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
       <Button
         variant="contained"
         color="success"
-        style={{margin:"10px"}}
+        style={{ margin: "10px" }}
         onClick={() => {
-          handleUpdate(imageUrl);
-          setImageUrl("");
+          if (imageUrl == undefined) {
+            alert("Invalid URL");
+          } else{
+            handleUpdate(imageUrl);
+            setImageUrl("");
+          };
         }}
       >
         Send edit
