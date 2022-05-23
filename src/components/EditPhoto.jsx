@@ -2,23 +2,23 @@ import { useState, useEffect } from "react";
 import ClickAwayListener from "@mui/material/ClickAwayListener";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
+import Snackbar from "@mui/material/Snackbar";
+import Alert from "@mui/material/Alert";
 
 export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
   const [imageUrl, setImageUrl] = useState();
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    console.log(open)
-  }, [open])
+    console.log(open);
+  }, [open]);
 
   const handleClick = () => {
     setOpen(true);
-  }
+  };
 
   const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
 
@@ -35,23 +35,17 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
 
   const verifyIfImageUrlIsValid = () => {
     try {
-      new URL(imageUrl)
-        handleUpdate(imageUrl);
-        setImageUrl("");
+      new URL(imageUrl);
+      handleUpdate(imageUrl);
+      setImageUrl("");
     } catch (error) {
-      handleClick();
-      console.log(error)
+      <span>Heelo my friend</span>;
+      console.log(error);
     }
   };
 
   return (
     <>
-    {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
-          This is a success message!
-        </Alert>
-      </Snackbar> */} 
-      {open ? <span>Batata</span> : <></>}
       <ClickAwayListener onClickAway={hideInputClickAway}>
         <TextField
           id="outlined-basic"
@@ -69,6 +63,11 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
       >
         Send edit
       </Button>
+      <Snackbar open={true} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+          This is a success message!
+        </Alert>
+      </Snackbar>
     </>
   );
 };
