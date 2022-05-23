@@ -10,10 +10,6 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
   const [open, setOpen] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    console.log(open);
-  }, [open]);
-
   const handleClick = () => {
     setOpen(true);
   };
@@ -40,7 +36,6 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
       handleUpdate(imageUrl);
       setImageUrl("");
     } catch (error) {
-      console.log(error);
       setOpen(true);
       setError("Invalid url");
     }

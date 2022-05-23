@@ -29,7 +29,6 @@ function AddPhoto({ refetchPhotos }) {
       handleSubmit();
       setUrl("");
     } catch (error) {
-      console.log(error);
       setOpen(true);
       setError("Invalid url");
     }
