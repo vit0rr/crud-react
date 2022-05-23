@@ -64,8 +64,8 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
         Send edit
       </Button>
       <Snackbar open={true} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-          This is a success message!
+        <Alert onClose={handleClose} severity="error" sx={{ width: "100%" }}>
+          This is a error message!
         </Alert>
       </Snackbar>
     </>
