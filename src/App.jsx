@@ -3,6 +3,7 @@ import AddPhoto from './components/AddPhoto';
 import { Container } from './components/Container';
 import { Photo } from './components/Photo';
 import { fetchPhotos } from './utils/photos';
+import About from './components/About'
 import './styles.css'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   return (
     <>
     <Container>
+      <About/>
       <AddPhoto refetchPhotos={setUrls} />
       <Container
         direction="row"
