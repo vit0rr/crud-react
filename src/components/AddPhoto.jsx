@@ -8,9 +8,8 @@ import Snackbar from "@mui/material/Snackbar";
 function AddPhoto({ refetchPhotos }) {
   const [url, setUrl] = useState("");
   const [open, setOpen] = useState(false);
-  const [error, setError] = useState(null);
 
-  const handleSubmit = () => {
+  const submit = () => {
     createPhoto(url);
     refetchPhotos(fetchPhotos());
   };
@@ -23,14 +22,13 @@ function AddPhoto({ refetchPhotos }) {
     setOpen(false);
   };
 
-  const verifyIfImageUrlIsValid = () => {
+  const handleSubmit = () => {
     try {
       new URL(url);
-      handleSubmit();
+      submit();
       setUrl("");
     } catch (error) {
       setOpen(true);
-      setError("Invalid url");
     }
   };
 
@@ -50,7 +48,7 @@ function AddPhoto({ refetchPhotos }) {
       <Button
         variant="contained"
         color="success"
-        onClick={verifyIfImageUrlIsValid}
+        onClick={handleSubmit}
       >
         Send
       </Button>{" "}

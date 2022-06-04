@@ -8,7 +8,6 @@ import Alert from "@mui/material/Alert";
 export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
   const [imageUrl, setImageUrl] = useState();
   const [open, setOpen] = useState(false);
-  const [error, setError] = useState(null);
 
   const handleClick = () => {
     setOpen(true);
@@ -37,7 +36,6 @@ export const EditPhoto = ({ handleUpdate, showInput, shouldShowInput }) => {
       setImageUrl("");
     } catch (error) {
       setOpen(true);
-      setError("Invalid url");
     }
   };
 
